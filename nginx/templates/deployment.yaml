@@ -3,11 +3,9 @@ kind: Deployment
 metadata:
   labels:
     app: nginx
-  name: nginx
+  name: nginx-deployment
 spec:
-  progressDeadlineSeconds: 600
   replicas: 3
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: nginx
