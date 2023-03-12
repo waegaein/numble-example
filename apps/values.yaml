@@ -1,0 +1,5 @@
+repoURL: https://github.com/waegaein/numble-example
+
+apps:
+  - name: nginx
+    namespace: default
