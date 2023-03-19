@@ -75,7 +75,10 @@ spec:
   # Configuration of Beat, which is dependent on the `type` of Beat specified.
   # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-deploy-elastic-beat
   #
-  config: {}
+  config:
+    filebeat.inputs:
+      - type: container
+        paths: [ /var/log/containers/*.log ]
 
 # ServiceAccount to be used by Elastic Beats. Some Beats features (such as autodiscover or Kubernetes module metricsets)
 # require that Beat Pods interact with Kubernetes APIs. This functionality requires specific permissions
