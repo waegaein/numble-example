@@ -34,7 +34,7 @@ spec:
   #
   # Note: This is required to be set, or the release install will fail.
   #
-  type: ""
+  type: filebeat
 
   # Referenced resources are below and depending on the setup, at least elasticsearchRef is required for a functional Beat.
   # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-connect-es
@@ -52,7 +52,7 @@ spec:
   # Reference to ECK-managed Elasticsearch instance.
   #
   elasticsearchRef:
-    name: elasticsearch
+    name: eck-elasticsearch
     # Optional namespace reference to Elasticsearch instance.
     # If not specified, then the namespace of the Beats instance
     # will be assumed.
