@@ -1,6 +1,8 @@
 repoURL: https://github.com/waegaein/numble-example
 
 apps:
+  - name: argo-cd
+    namespace: argocd
   - name: nginx
     namespace: default
   - name: eck-operator
