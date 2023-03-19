@@ -6,7 +6,7 @@ apps:
   - name: eck-operator
     namespace: elastic
     ignoreDifferences:
-      - group: admissionregistration
+      - group: admissionregistration.k8s.io
         kind: ValidatingWebhookConfiguration
         jqPathExpressions:
           - .webhooks[]?.clientConfig.caBundle
