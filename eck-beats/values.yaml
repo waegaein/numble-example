@@ -63,7 +63,13 @@ spec:
   # At least one is required of [daemonSet, deployment].
   # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-chose-the-deployment-model
   #
-  daemonSet: {}
+  daemonSet:
+    podTemplate:
+      spec:
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true
+        securityContext:
+          runAsUser: 0
   # deployment: {}
 
   # Configuration of Beat, which is dependent on the `type` of Beat specified.
