@@ -3,3 +3,11 @@ repoURL: https://github.com/waegaein/numble-example
 apps:
   - name: nginx
     namespace: default
+  - name: eck-operator
+    namespace: elastic
+  - name: eck-elasticsearch
+    namespace: elastic
+  - name: eck-kibana
+    namespace: elastic
+  - name: eck-beats
+    namespace: elastic
