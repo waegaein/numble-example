@@ -42,3 +42,7 @@ spec:
     # will be assumed.
     #
     # namespace: default
+  http:
+    service:
+      spec:
+        type: LoadBalancer
