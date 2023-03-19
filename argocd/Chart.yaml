@@ -1,0 +1,3 @@
+apiVersion: 0.0.1
+name: argocd
+version: 0.0.1
