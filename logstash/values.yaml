@@ -27,7 +27,7 @@ logstashPipeline:
     }
     filter {
       mutate {
-        rename => {
+        copy => {
           "host.name" => "node"
           "kubernetes.namespace" => "namespace"
           "kubernetes.pod.name" => "pod"
@@ -35,8 +35,14 @@ logstashPipeline:
         }
         remove_field => [
           "agent",
+          "container",
+          "ecs",
+          "event"
           "host",
-          "kubernetes"
+          "input",
+          "log",
+          "kubernetes",
+          "tags"
         ]
       }
     }
