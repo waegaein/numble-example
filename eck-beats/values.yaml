@@ -73,10 +73,15 @@ spec:
         containers:
           - name: filebeat
             volumeMounts:
-              - name: stdout
+              - name: varlogcontainers
+                mountPath: /var/log/containers
+              - name: varlogpods
                 mountPath: /var/log/pods
         volumes:
-          - name: stdout
+          - name: varlogcontainers
+            hostPath:
+              path: /var/log/containers
+          - name: varlogpods
             hostPath:
               path: /var/log/pods
 
@@ -86,11 +91,19 @@ spec:
   # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-deploy-elastic-beat
   #
   config:
-    filebeat.inputs:
-      - type: container
-        paths: [ /var/log/pods/**/*.log ]
-        processors:
-          - add_kubernetes_metadata:
+    filebeat:
+      autodiscover:
+        providers:
+          - type: kubernetes
+            node: ${NODE_NAME}
+            hints:
+              enabled: true
+              default_config:
+                type: container
+                paths: [ "/var/log/containers/*${data.kubernetes.container.id}.log" ]
+    processors:
+      - add_cloud_metadata: {}
+      - add_host_metadata: {}
     output.logstash:
       hosts: [ logstash-logstash:5044 ]
 
