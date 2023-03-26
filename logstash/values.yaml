@@ -31,10 +31,10 @@ logstashPipeline:
       }
       mutate {
         rename => {
-          "host.name" => "node"
-          "kubernetes.namespace" => "namespace"
-          "kubernetes.pod.name" => "pod"
-          "kubernetes.container.name" => "container"
+          "[host][name]" => "node"
+          "[kubernetes][namespace]" => "namespace"
+          "[kubernetes][pod][name]" => "pod"
+          "[kubernetes][container][name]" => "container"
         }
       }
       mutate {
