@@ -52,7 +52,7 @@ spec:
   # Reference to ECK-managed Elasticsearch instance.
   #
   elasticsearchRef:
-    name: eck-elasticsearch
+    name:
     # Optional namespace reference to Elasticsearch instance.
     # If not specified, then the namespace of the Beats instance
     # will be assumed.
