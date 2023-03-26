@@ -26,8 +26,7 @@ logstashPipeline:
       elasticsearch {
         hosts => [ "https://eck-elasticsearch-es-http:9200" ]
         ssl_certificate_verification => false
-        index => "stdout"
-        
+        index => "stdout" 
       }
     }
 
