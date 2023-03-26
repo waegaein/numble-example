@@ -116,37 +116,36 @@ spec:
 # require that Beat Pods interact with Kubernetes APIs. This functionality requires specific permissions
 # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-role-based-access-control-for-beats
 #
-serviceAccount: {}
-#  name: elastic-beat-filebeat-quickstart
-#  namespace: optional-namespace
+serviceAccount:
+  name: elastic-beat-filebeat-quickstart
 
 # ClusterRoleBinding to be used by Elastic Beats. Similar to ServiceAccount, this is required in some scenarios.
 # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-role-based-access-control-for-beats
 #
-clusterRoleBinding: {}
-#  name: elastic-beat-autodiscover-binding
-#  subjects:
-#  - kind: ServiceAccount
-#    name: elastic-beat-filebeat-quickstart
-#    namespace: default
-#  roleRef:
-#    kind: ClusterRole
-#    name: elastic-beat-autodiscover
-#    apiGroup: rbac.authorization.k8s.io
+clusterRoleBinding:
+  name: elastic-beat-autodiscover-binding
+  subjects:
+    - kind: ServiceAccount
+      name: elastic-beat-filebeat-quickstart
+      namespace: default
+  roleRef:
+    kind: ClusterRole
+    name: elastic-beat-autodiscover
+    apiGroup: rbac.authorization.k8s.io
 
 # ClusterRole to be used by Elastic Beats. Similar to ServiceAccount, this is required in some scenarios.
 # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-role-based-access-control-for-beats
 #
-clusterRole: {}
-#  name: elastic-beat-autodiscover
-#  rules:
-#  - apiGroups: [""]
-#    resources:
-#    - events
-#    - pods
-#    - namespaces
-#    - nodes
-#    verbs:
-#    - get
-#    - watch
-#    - list
+clusterRole:
+  name: elastic-beat-autodiscover
+  rules:
+    - apiGroups: [""]
+      resources:
+        - events
+        - pods
+        - namespaces
+        - nodes
+      verbs:
+        - get
+        - watch
+        - list
