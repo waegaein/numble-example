@@ -77,6 +77,11 @@ spec:
                 mountPath: /var/log/containers
               - name: varlogpods
                 mountPath: /var/log/pods
+            env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
         volumes:
           - name: varlogcontainers
             hostPath:
