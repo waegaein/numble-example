@@ -86,7 +86,6 @@ spec:
   # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-deploy-elastic-beat
   #
   config:
-    logging.level: debug
     filebeat.inputs:
       - type: container
         paths: [ /var/log/pods/**/*.log ]
