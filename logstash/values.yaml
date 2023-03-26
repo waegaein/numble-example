@@ -15,15 +15,19 @@ logstashConfig: {}
 
 # Allows you to add any pipeline files in /usr/share/logstash/pipeline/
 ### ***warn*** there is a hardcoded logstash.conf in the image, override it first
-logstashPipeline: {}
-#  logstash.conf: |
-#    input {
-#      exec {
-#        command => "uptime"
-#        interval => 30
-#      }
-#    }
-#    output { stdout { } }
+logstashPipeline:
+  logstash.conf: |
+    input {
+      beats {
+        port => 5044
+      }
+    }
+    output {
+      elasticsearch {
+        hosts => [ "http://eck-elasticsearch-es-http:9200" ]
+        index => "stdout"
+      }
+    }
 
 # Allows you to add any pattern files in your custom pattern dir
 logstashPatternDir: "/usr/share/logstash/patterns/"
@@ -261,15 +265,14 @@ lifecycle:
   #     command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
 
 service:
-  {}
   # annotations: {}
-  # type: ClusterIP
+  type: ClusterIP
   # loadBalancerIP: ""
-  # ports:
-  #   - name: beats
-  #     port: 5044
-  #     protocol: TCP
-  #     targetPort: 5044
+  ports:
+    - name: beats
+      port: 5044
+      protocol: TCP
+      targetPort: 5044
   #   - name: http
   #     port: 8080
   #     protocol: TCP
