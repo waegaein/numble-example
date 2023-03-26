@@ -6,10 +6,12 @@ replicas: 1
 #
 # Note that when overriding logstash.yml, `http.host: 0.0.0.0` should always be included
 # to make default probes work.
-logstashConfig: {}
-#  logstash.yml: |
-#    key:
-#      nestedkey: value
+logstashConfig:
+  logstash.yml: |
+    http.host: "0.0.0.0"
+    xpack.monitoring.elasticsearch.hosts: [ "https://eck-elasticsearch-es-http:9200" ]
+    xpack.monitoring.elasticsearch.user: "elastic"
+    xpack.monitoring.elasticsearch.password: "${elastic}"
 #  log4j2.properties: |
 #    key = value
 
