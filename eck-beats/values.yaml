@@ -120,7 +120,6 @@ spec:
 #
 serviceAccount:
   name: elastic-beat-filebeat-quickstart
-  namespace: elastic
 
 # ClusterRoleBinding to be used by Elastic Beats. Similar to ServiceAccount, this is required in some scenarios.
 # ref: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html#k8s-beat-role-based-access-control-for-beats
@@ -130,7 +129,7 @@ clusterRoleBinding:
   subjects:
     - kind: ServiceAccount
       name: elastic-beat-filebeat-quickstart
-      namespace: default
+      namespace: elastic
   roleRef:
     kind: ClusterRole
     name: elastic-beat-autodiscover
