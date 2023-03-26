@@ -79,6 +79,8 @@ spec:
     filebeat.inputs:
       - type: container
         paths: [ /var/log/containers/*.log ]
+    output.logstash:
+      hosts: [ logstash-logstash:5044 ]
 
 # ServiceAccount to be used by Elastic Beats. Some Beats features (such as autodiscover or Kubernetes module metricsets)
 # require that Beat Pods interact with Kubernetes APIs. This functionality requires specific permissions
