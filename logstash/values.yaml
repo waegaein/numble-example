@@ -24,7 +24,7 @@ logstashPipeline:
     }
     output {
       elasticsearch {
-        hosts => [ "http://eck-elasticsearch-es-http:9200" ]
+        hosts => [ "https://eck-elasticsearch-es-http:9200" ]
         index => "stdout"
       }
     }
