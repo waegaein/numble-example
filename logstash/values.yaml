@@ -37,7 +37,7 @@ logstashPipeline:
           "agent",
           "container",
           "ecs",
-          "event"
+          "event",
           "host",
           "input",
           "log",
