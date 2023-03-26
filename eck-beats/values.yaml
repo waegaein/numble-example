@@ -89,8 +89,8 @@ spec:
     filebeat.inputs:
       - type: container
         paths: [ /var/log/pods/**/*.log ]
-    processors:
-      - add_kubernetes_metadata:
+        processors:
+          - add_kubernetes_metadata:
     output.logstash:
       hosts: [ logstash-logstash:5044 ]
 
