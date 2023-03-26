@@ -26,6 +26,8 @@ logstashPipeline:
       elasticsearch {
         hosts => [ "https://eck-elasticsearch-es-http:9200" ]
         ssl_certificate_verification => false
+        user => "elastic"
+        password => "${elastic}"
         index => "stdout" 
       }
     }
@@ -44,9 +46,9 @@ extraEnvs: []
 #    value: the_value_goes_here
 
 # Allows you to load environment variables from kubernetes secret or config map
-envFrom: []
-# - secretRef:
-#     name: env-secret
+envFrom:
+  - secretRef:
+      name: eck-elasticsearch-es-elastic-user
 # - configMapRef:
 #     name: config-map
 
