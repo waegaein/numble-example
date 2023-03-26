@@ -70,6 +70,8 @@ spec:
         hostNetwork: true
         securityContext:
           runAsUser: 0
+        serviceAccountName: elastic-beat-filebeat-quickstart
+        automountServiceAccountToken: true
         containers:
           - name: filebeat
             volumeMounts:
