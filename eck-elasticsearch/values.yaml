@@ -80,6 +80,7 @@ nodeSets:
     #
     node.store.allow_mmap: false
     xpack.monitoring.collection.enabled: true
+    xpack.security.http.ssl.enabled: false
   podTemplate:
     spec:
       containers:
