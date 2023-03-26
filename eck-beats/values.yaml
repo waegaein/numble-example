@@ -73,12 +73,12 @@ spec:
         containers:
           - name: filebeat
             volumeMounts:
-              - name: varlogcontainers
-                mountPath: /var/log/containers
+              - name: stdout
+                mountPath: /var/log/pods
         volumes:
-          - name: varlogcontainers
+          - name: stdout
             hostPath:
-              path: /var/log/containers
+              path: /var/log/pods
 
   # deployment: {}
 
