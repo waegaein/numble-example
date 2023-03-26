@@ -27,7 +27,7 @@ logstashPipeline:
     }
     filter {
       mutate {
-        rename {
+        rename => {
           "host.name" => "node"
           "kubernetes.namespace" => "namespace"
           "kubernetes.pod.name" => "pod"
