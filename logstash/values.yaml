@@ -25,6 +25,21 @@ logstashPipeline:
         port => 5044
       }
     }
+    filter {
+      mutate {
+        rename {
+          "host.name" => "node"
+          "kubernetes.namespace" => "namespace"
+          "kubernetes.pod.name" => "pod"
+          "kubernetes.container.name" => "container"
+        }
+        remove_field => [
+          "agent",
+          "host",
+          "kubernetes"
+        ]
+      }
+    }
     output {
       elasticsearch {
         hosts => [ "https://eck-elasticsearch-es-http:9200" ]
